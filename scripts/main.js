@@ -89,6 +89,12 @@ buttonNumbers.forEach(function(buttonNumbers){
 
 function calc(arr) {
 
+
+let numberCalculation=  newCalculations.map(function(item) {
+    return parseInt(item);
+});
+
+console.log("numberCalculation",numberCalculation)
   let result = "";
 
 //  while (result) {
@@ -98,17 +104,21 @@ function calc(arr) {
 //  console.log('first number', typeof calculations[0]);
 
   if (newCalculations[1] === '+') {
-    result= calculations[0] + calculations[2];
+    result= numberCalculation[0] + numberCalculation[2];
 
-  } else if (calculations[1] === '-') {
-    result = calculations[0] - calculations[2];
+  } else if (newCalculations[1] === '-') {
+    result = numberCalculation[0] - numberCalculation[2];
 
-  }else if (buttonOperators === '*') {
-    result=  calculations[0] * calculations[2];
+  }else if (newCalculations[1]=== '×') {
+    result=  numberCalculation[0] * numberCalculation[2];
 
-  } else if (calculations[1] === '/'){
-    result= calculations[0] * calculations[2];
+  } else if (newCalculations[1] === '÷'){
+    result= numberCalculation[0] / numberCalculation[2];
+  } else {
+
+    console.log('not recognized',newCalculations[1]);
   }
+
 
   return result;
 };
@@ -146,7 +156,7 @@ let calculate= function(event) {
         //console.log('newCalculations', newCalculations);
 
    result = calc();
-   //console.log(result);
+   console.log(result);
 };
 
   buttonEqual.addEventListener ('click', calculate);
