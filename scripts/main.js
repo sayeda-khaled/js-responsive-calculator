@@ -59,7 +59,7 @@ buttonNumbers.forEach(function(buttonNumbers){
 
 
 
-      calculations.push(event.target.textContent);
+      //calculations.push(event.target.textContent);
       calculatorScreen.value = event.target.textContent;
     });})
 
@@ -95,7 +95,7 @@ function calc(arr) {
 //  alert(buttonEqual);
 //}
 
-  console.log('first number', typeof calculations[0]);
+//  console.log('first number', typeof calculations[0]);
 
   if (newCalculations[1] === '+') {
     result= calculations[0] + calculations[2];
@@ -124,15 +124,19 @@ let calculate= function(event) {
         // let secondNumber = [];
         // secondNumber.push(calculations.join('')); // calculation[0]
         // console.log('aftser join', secondNumber);
-        //calculations =[];
 
         console.log('before join2', calculations);
+
+
         secondNumber =calculations.join('');
         //secondNumber.push(calculations.join(''));
         calculations =[];
-        console.log('aftser join', secondNumber);
 
-        finalCalculation.push(secondNumber);
+
+        console.log('aftser join2', secondNumber);
+
+
+        newCalculations.push(secondNumber);
 
         //newalculations.push(secondNumber);
 
