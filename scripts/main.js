@@ -12,35 +12,38 @@ let firstOperator= null;
 let firstNumber = null;
 let secondNumber = null;
 
-//The Numbers
+//The Numbers buttons
 
 buttonNumbers.forEach(function(buttonNumbers){
   buttonNumbers.addEventListener('click', function (event) {
     //alert(event.target.textContent);
     calculations.push(event.target.textContent); // Pushing the value of the pushed button to the calculations array
     calculatorScreen.value = event.target.textContent; //displaying the values on the calculator screen
-    //console.log(calculatorScreen);
+
+
+
 
   });})
 
 
-// The Operators
+// The Operators buttons
   buttonOperators.forEach(function(buttonOperators){
     buttonOperators.addEventListener('click', function (event) {
       //alert(event.target.textContent);
       if (firstOperator == null) {
         firstOperator = event.target.textContent
       }
-      console.log('before join', calculations); // this is an array
+      console.log('before concatenating first number', calculations); // this is an array
       //calculations = calculations.join(''); // this now is a string
 
       //let firstNumber = [];
       //firstNumber.push(calculations.join('')); // calculation[0]
 
-      firstNumber =calculations.join('');
-      //firstNumber.push(calculations.join(''));
+      firstNumber =calculations.join(''); //To concatenate the numbers before the operators..
+      //firstNumber.push(calculations.join('')); // It wouldn't update calculations
+      //.join will not return a mutated or updated array
 
-      console.log('aftser join', firstNumber);
+      console.log('after concatenating first number', firstNumber);
       calculations =[];
 
       newCalculations.push(firstNumber);
@@ -71,10 +74,14 @@ buttonNumbers.forEach(function(buttonNumbers){
       //The Clear button
 
     let clear= function(event) {
-      //alert(event.target.textContent);
+      //alert(event.target.textConten)t;
 
-      calculations=[];
+      calculations = [];
+      newCalculations=[];
+      firstOperator= null;
 
+
+      calculatorScreen.value = "0";
     };
 
     buttonClear.addEventListener('click', clear);
@@ -89,7 +96,7 @@ buttonNumbers.forEach(function(buttonNumbers){
 
 function calc(arr) {
 
-
+//Converting my elements into a number
 let numberCalculation=  newCalculations.map(function(item) {
     return parseInt(item);
 });
@@ -97,9 +104,6 @@ let numberCalculation=  newCalculations.map(function(item) {
 console.log("numberCalculation",numberCalculation)
   let result = "";
 
-//  while (result) {
-//  alert(buttonEqual);
-//}
 
 //  console.log('first number', typeof calculations[0]);
 
@@ -116,7 +120,8 @@ console.log("numberCalculation",numberCalculation)
     result= numberCalculation[0] / numberCalculation[2];
   } else {
 
-    console.log('not recognized',newCalculations[1]);
+
+    //console.log('not recognized',newCalculations[1]);
   }
 
 
@@ -148,6 +153,8 @@ let calculate= function(event) {
 
         newCalculations.push(secondNumber);
 
+
+
         //newalculations.push(secondNumber);
 
         //newCalculations.push(firstOperator);
@@ -155,8 +162,10 @@ let calculate= function(event) {
 
         //console.log('newCalculations', newCalculations);
 
-   result = calc();
-   console.log(result);
+        result = calc();
+        console.log(result);
+
+   calculatorScreen.value = result;
 };
 
   buttonEqual.addEventListener ('click', calculate);
