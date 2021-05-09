@@ -28,9 +28,9 @@ buttonNumbers.forEach(function(buttonNumbers){
   buttonOperators.forEach(function(buttonOperators){
     buttonOperators.addEventListener('click', function (event) {
       //alert(event.target.textContent);
-      if (firstOperator == null) {
-        firstOperator = event.target.textContent
-      }
+
+        firstOperator = event.target.textContent// Assigning the value of the operator
+
       console.log('before concatenating first number', calculations); // this is an array
       //calculations = calculations.join(''); // this now is a string
 
@@ -54,14 +54,14 @@ buttonNumbers.forEach(function(buttonNumbers){
     });})
 
 
-      //The Clear button
+      //The Clear button c
 
     let clear= function(event) {
       //alert(event.target.textConten)t;
 
       calculations = [];
       newCalculations=[];
-      firstOperator= null;
+
 
       calculatorScreen.value = "0";
     };
